@@ -13,8 +13,8 @@ import MapView, { Marker } from "react-native-maps";
 const DEFAULT_REGION = {
   latitude: 47.49813613587627,
   longitude: 19.058699240261515,
-  latitudeDelta: 0.2,
-  longitudeDelta: 0.2,
+  latitudeDelta: 0.15,
+  longitudeDelta: 0.15,
 };
 
 export default function App() {
@@ -37,26 +37,8 @@ export default function App() {
         />
       </MapView>
 
-      <View
-        style={{
-          position: "absolute",
-          width: "100%",
-          top: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-          padding: 20,
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            height: 50,
-            justifyContent: "center",
-            borderWidth: 2,
-            borderRadius: 30,
-            borderColor: "purple",
-            backgroundColor: "white",
-            padding: 10,
-          }}
-          activeOpacity={0.6}
-        >
+      <View style={styles.searchContainer}>
+        <TouchableOpacity style={styles.searchButton} activeOpacity={0.6}>
           <Text>Rendezvény keresése...</Text>
         </TouchableOpacity>
       </View>
@@ -68,5 +50,20 @@ const styles = StyleSheet.create({
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
+  },
+  searchContainer: {
+    position: "absolute",
+    width: "100%",
+    top: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    padding: 20,
+  },
+  searchButton: {
+    height: 50,
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 30,
+    borderColor: "purple",
+    backgroundColor: "white",
+    padding: 10,
   },
 });
